@@ -32,16 +32,14 @@ def personalBunksView(request, user_id):
 def bunk(request, user_id):
 	user_id = int(user_id)
 	sender = get_object_or_404(User, id=user_id)
-	try: 
-		reciever = User.objects.get(username=request.POST['username'])
-		print(type(reciever), reciever)
+	try:
+		reciever_username = request.POST['username']
+		reciever = User.objects.get(username=reciever_username)
+	except (KeyError):
+		return render(request, 'jb/bunk.html', {'user':sender})
 	except:
-		print('except')
-		return render(request, 'jb/bunk.html', {'user':sender,'message': 'invalid username, try again :)'})
+		return render(request, 'jb/bunk.html', {'user':sender, 'message':'invalid username :( try again :)'})
 	else:
-		print('else')
 		b = Bunk(to_user=reciever, from_user=sender, pub_date=timezone.now())
 		b.save()
 		return render(request, 'jb/bunk.html', {'user':sender,'message': 'Success! Send Another! :)'})
-	
-# Create your views here.
