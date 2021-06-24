@@ -1,0 +1,21 @@
+<h1>OUTGOING BUNKS<h1>
+{% if froms %}
+    <ul>
+    {% for bunk in froms %}
+        <li>{{bunk}}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No outgoing bunks.</p>
+{% endif %}
+
+<h1>INCOMING BUNKS<h1>
+{% if tos %}
+    <ul>
+    {% for bunk in tos %}
+        <li>{{bunk}}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No incoming bunks.</p>
+{% endif %}
