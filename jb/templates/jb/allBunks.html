@@ -22,7 +22,7 @@
 {% if bunks_list %}
     <ul>
     {% for bunk in bunks_list %}
-        <li><img src="{{bunk.from_user.photo_string}}" style="width:25px;height:25px;"> <img src="{{bunk.to_user.photo_string}}" style="width:25px;height:25px;">{{"("}}{{bunk.to_user}}{{", "}}{{bunk.from_user}}{{", "}}{{bunk.pub_date}}{{")"}}</a></li>
+        <li><img src="{{bunk.from_user.photo_string}}" style="width:25px;height:25px;"> <img src="{{bunk.to_user.photo_string}}" style="width:25px;height:25px;">{{"("}}{{bunk.from_user}}{{", "}}{{bunk.to_user}}{{", "}}{{bunk.pub_date}}{{")"}}</a></li>
     {% endfor %}
     </ul>
 {% else %}
