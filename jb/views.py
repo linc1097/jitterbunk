@@ -91,10 +91,10 @@ def bunk(request, username):
 		reciever_username = request.POST['username']
 		reciever = User.objects.get(username=reciever_username)
 	except (KeyError):
-		return render(request, 'jb/bunk.html', {'user':sender})
+		return render(request, 'jb/bunk.html', {'user':sender, 'users':User.objects.all()})
 	except:
 		return render(request, 'jb/bunk.html', 
-			{'users':User.objects.all(), 'user':sender, 'message':'That user doesn\'t exist . . . YET, maybe one day!'})
+			{'users' : User.objects.all(), 'user':sender, 'message':'That user doesn\'t exist . . . YET, maybe one day!'})
 	else:
 		b = Bunk(to_user=reciever, from_user=sender, pub_date=(timezone.now()))
 		b.save()
