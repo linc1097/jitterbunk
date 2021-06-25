@@ -19,17 +19,20 @@ class Bunk(models.Model):
 
 	def __str__(self):
 		users = str(self.from_user) + ', ' +  str(self.to_user) +  ', '
-		date = str(self.pub_date.date().month) + r'/' + str(self.pub_date.date().day) + r'/' + str(self.pub_date.date().year)
-		hour = self.pub_date.time().hour
+		return '(' +  users + str(self.pub_date.date()) + self.time() + ')'
+
+	def time(self):
+		hour = timezone.localtime(self.pub_date).time().hour
 		hour12 = hour % 12
 		ampm = 'PM'
 		if hour == hour12:
 			ampm = 'AM'
 		if hour12 == 0:
 			hour12 = 12
-		time = ', ' + str(hour12) + ':' + str(self.pub_date.time().minute) + ' ' + ampm
-		return '(' +  users + date + time + ')'
-
+		minutes = str(self.pub_date.time().minute)
+		if len(minutes) == 1:
+			minutes = '0' + minutes
+		return ', ' + str(hour12) + ':' + minutes + ' ' + ampm
 
 	def was_published_recently(self):
 		now = timezone.now()

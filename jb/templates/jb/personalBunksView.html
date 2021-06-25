@@ -1,6 +1,6 @@
 <form action="{% url 'jb:personalBunksView' user.username %}" method="post">
 {% csrf_token %}
-<label for="photo_string">Cgange profile picture:</label><br>
+<label for="photo_string">Change profile picture:</label><br>
 <input type="text" id="photo_string" name="photo_string" value="url for new picture here"><br>
 <input type="submit" value="CHANGE IT!" />
 </form>
@@ -26,3 +26,8 @@
 {% else %}
     <p>No incoming bunks.</p>
 {% endif %}
+
+<a href="{% url 'jb:allBunks' %}">{{"Home Page"}}</a>
+<br>
+<a href="{% url 'jb:bunk' user.username%}">{{"BUNK someone"}}</a>
+

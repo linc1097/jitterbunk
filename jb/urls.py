@@ -6,7 +6,7 @@ app_name = 'jb'
 
 urlpatterns = [
 	#ex: /jb/
-	url(r'^$', views.AllBunksView.as_view(), name='index'),
+	url(r'^$', views.allBunks, name='allBunks'),
 	#ex: /jb/signup
 	url(r'^signup/$', views.signup, name='signup'),
 	#ex: /jb/1

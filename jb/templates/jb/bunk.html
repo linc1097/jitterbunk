@@ -12,3 +12,7 @@
 </datalist>
 <input type="submit" value="BUNK!" />
 </form>
+
+<a href="{% url 'jb:allBunks' %}">{{"Home Page"}}</a>
+<br>
+<a href="{% url 'jb:personalBunksView' user.username %}">{{"Back to your BUNK page"}}</a>

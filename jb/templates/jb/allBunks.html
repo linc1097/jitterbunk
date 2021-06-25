@@ -1,5 +1,24 @@
 <html>
 <body>
+<h1>See your bunk account:<h1>
+{% if message %}<p><strong>{{ message }}</strong></p>{% endif %}
+
+<form action="{% url 'jb:allBunks' %}" method="post">
+{% csrf_token %}
+<label for="username">Your username:</label><br>
+<input list="usernames" name="username" id="username">
+<datalist id="usernames">
+    {% for u in users %}
+        <option value="{{u.username}}">
+    {% endfor %}
+</datalist>
+<input type="submit" value="SEE YOUR ACCOUNT!" />
+</form>
+
+<a href="{% url 'jb:signup' %}">{{"Signup as new BUNKer"}}</a>
+
+
+<h1>ALL BUNKS: <h1>
 {% if bunks_list %}
     <ul>
     {% for bunk in bunks_list %}
