@@ -35,8 +35,6 @@ def allBunks(request):
 	try:
 		username = request.POST['username']
 		if User.objects.filter(username=username):
-			print("hmmmmmm")
-			print(reverse('jb:personalBunksView',args=(username,)))
 			return HttpResponseRedirect(reverse('jb:personalBunksView',args=(username,)))
 		else:
 			context['message'] = 'username not found. try again'
@@ -72,7 +70,6 @@ def signup(request):
 	try:
 		username = request.POST['username']
 		photo_string = request.POST['photo_string']
-		print(User.objects.filter(username=username))
 		if User.objects.filter(username=username) or username == 'signup':
 			message = 'username ' + username + ' already taken, try again!'
 			return render(request, 'jb/signup.html', {'message': message})
