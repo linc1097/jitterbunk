@@ -1,9 +1,14 @@
 <h1>BUNK A FRIEND! :4)<h1>
 {% if message %}<p><strong>{{ message }}</strong></p>{% endif %}
 
-<form action="{% url 'jb:bunk' user.id %}" method="post">
+<form action="{% url 'jb:bunk' user.username %}" method="post">
 {% csrf_token %}
 <label for="username">Username of Bunkee:</label><br>
-<input type="text" id="username" name="username" value="type here"><br>
+<input list="usernames" name="username" id="username">
+<datalist id="usernames">
+    {% for u in users %}
+        <option value="{{u.username}}">
+    {% endfor %}
+</datalist>
 <input type="submit" value="BUNK!" />
 </form>

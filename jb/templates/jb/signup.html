@@ -1,0 +1,11 @@
+<h1>Sign Up<h1>
+{% if message %}<p><strong>{{ message }}</strong></p>{% endif %}
+
+<form action="{% url 'jb:signup' %}" method="post">
+{% csrf_token %}
+<label for="username">Your username (cannot be changed later):</label><br>
+<input type="text" id="username" name="username" value="username here"><br>
+<label for="photo_string">url for your profile picture (can be changed later) leave it blank for no profile picture:</label><br>
+<input type="text" id="photo_string" name="photo_string" value="url here"><br>
+<input type="submit" value="SIGNUP!" />
+</form>

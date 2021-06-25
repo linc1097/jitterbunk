@@ -9,6 +9,9 @@ class User(models.Model):
 	def __str__(self):
 		return self.username
 
+	def setPhotoString(self, photo_string):
+		self.photo_string = photo_string
+
 class Bunk(models.Model):
 	from_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='outgoing_bunks')
 	to_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='incoming_bunks')

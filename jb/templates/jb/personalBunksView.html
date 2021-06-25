@@ -1,8 +1,15 @@
+<form action="{% url 'jb:personalBunksView' user.username %}" method="post">
+{% csrf_token %}
+<label for="photo_string">Cgange profile picture:</label><br>
+<input type="text" id="photo_string" name="photo_string" value="url for new picture here"><br>
+<input type="submit" value="CHANGE IT!" />
+</form>
+
 <h1>OUTGOING BUNKS<h1>
 {% if froms %}
     <ul>
     {% for bunk in froms %}
-        <li>{{bunk}}</a></li>
+        <li><img src="{{bunk.from_user.photo_string}}" style="width:25px;height:25px;"> <img src="{{bunk.to_user.photo_string}}" style="width:25px;height:25px;">{{bunk}}</a></li>
     {% endfor %}
     </ul>
 {% else %}
@@ -13,7 +20,7 @@
 {% if tos %}
     <ul>
     {% for bunk in tos %}
-        <li>{{bunk}}</a></li>
+        <li><img src="{{bunk.from_user.photo_string}}" style="width:25px;height:25px;"> <img src="{{bunk.to_user.photo_string}}" style="width:25px;height:25px;">{{bunk}}</a></li>
     {% endfor %}
     </ul>
 {% else %}

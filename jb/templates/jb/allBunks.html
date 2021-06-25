@@ -1,9 +1,14 @@
+<html>
+<body>
 {% if bunks_list %}
     <ul>
     {% for bunk in bunks_list %}
-        <li>{{bunk}}</a></li>
+        <li><img src="{{bunk.from_user.photo_string}}" style="width:25px;height:25px;"> <img src="{{bunk.to_user.photo_string}}" style="width:25px;height:25px;">{{bunk}}</a></li>
     {% endfor %}
     </ul>
 {% else %}
     <p>No Bunks exist right now :( be the first!!!.</p>
 {% endif %}
+
+</body>
+</html>
