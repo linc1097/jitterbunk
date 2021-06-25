@@ -27,7 +27,7 @@ def personalBunksViewContext(username):
 	return context
 
 def allBunks(request):
-	bunks_list = Bunk.objects.filter(pub_date__lte=(timezone.now()-datetime.timedelta(hours=5)))
+	bunks_list = Bunk.objects.filter(pub_date__lte=(timezone.now()))
 	context = {
 		'bunks_list': bunks_list,
 		'users' : User.objects.all()
